@@ -13,7 +13,8 @@
     "node-sass": "0.5.x",
     "coffee-script": "1.6.x",
     "mincer": "0.4.x",
-    "connect-mincer": "0.2.x"
+    "connect-mincer": "0.2.x",
+    "ejs": "0.8.x"
   },
   "engines": {
     "node": "0.10.x",

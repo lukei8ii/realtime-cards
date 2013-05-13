@@ -1,10 +1,13 @@
+"use strict"
+
 express       = require("express")
+app           = express()
 server        = require("http").createServer(app)
-# io            = require("socket.io").listen(server)
+io            = require("socket.io").listen(server)
 ConnectMincer = require('connect-mincer')
 env           = process.env.NODE_ENV
 
-app = express()
+
 app.use express.logger()
 
 mincer = new ConnectMincer(
@@ -37,16 +40,16 @@ app.set 'view engine', 'ejs'
 #   else
 #     console.log "Succeeded connected to: " + uristring
 
-# io.configure ->
-#   io.set "transports", ["xhr-polling"]
-#   io.set "polling duration", 10
+io.configure ->
+  io.set "transports", ["xhr-polling"]
+  io.set "polling duration", 10
 
-# io.sockets.on "connection", (socket) ->
-#   socket.emit "news",
-#     hello: "world"
+io.sockets.on "connection", (socket) ->
+  socket.emit "news",
+    hello: "world"
 
-#   socket.on "my other event", (data) ->
-#     console.log data
+  socket.on "my other event", (data) ->
+    console.log data
 
 app.get "/", (req, res) ->
   res.render "home.ejs"
