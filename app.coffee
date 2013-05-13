@@ -10,13 +10,13 @@ port = process.env.PORT or 5000
 # var redisURL = url.parse(process.env.REDISCLOUD_URL);
 # var client = redis.createClient(redisURL.port, redisURL.hostname, {no_ready_check: true});
 # client.auth(redisURL.auth.split(":")[1]);
-# mongoose = require("mongoose")
-# uristring = process.env.MONGOLAB_URI or process.env.MONGOHQ_URL or "mongodb://localhost/HelloMongoose"
-# mongoose.connect uristring, (err, res) ->
-#   if err
-#     console.log "ERROR connecting to: " + uristring + ". " + err
-#   else
-#     console.log "Succeeded connected to: " + uristring
+mongoose = require("mongoose")
+uristring = process.env.MONGOLAB_URI or process.env.MONGOHQ_URL or "mongodb://localhost/HelloMongoose"
+mongoose.connect uristring, (err, res) ->
+  if err
+    console.log "ERROR connecting to: " + uristring + ". " + err
+  else
+    console.log "Succeeded connected to: " + uristring
 
 io.configure ->
   io.set "transports", ["xhr-polling"]
