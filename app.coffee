@@ -1,12 +1,13 @@
 "use strict"
 
-express       = require("express")
+express       = require "express"
 app           = express()
 server        = require("http").createServer(app)
 io            = require("socket.io").listen(server)
-ConnectMincer = require('connect-mincer')
-env           = process.env.NODE_ENV
+ConnectMincer = require "connect-mincer"
+mongoose      = require "mongoose"
 
+env           = process.env.NODE_ENV
 
 app.use express.logger()
 
@@ -32,13 +33,13 @@ app.set 'view engine', 'ejs'
 # var redisURL = url.parse(process.env.REDISCLOUD_URL);
 # var client = redis.createClient(redisURL.port, redisURL.hostname, {no_ready_check: true});
 # client.auth(redisURL.auth.split(":")[1]);
-# mongoose = require("mongoose")
-# uristring = process.env.MONGOLAB_URI or process.env.MONGOHQ_URL or "mongodb://localhost/HelloMongoose"
-# mongoose.connect uristring, (err, res) ->
-#   if err
-#     console.log "ERROR connecting to: " + uristring + ". " + err
-#   else
-#     console.log "Succeeded connected to: " + uristring
+
+uristring = process.env.MONGOLAB_URI or process.env.MONGOHQ_URL
+mongoose.connect uristring, (err, res) ->
+  if err
+    console.log "ERROR connecting to: " + uristring + ". " + err
+  else
+    console.log "Succeeded connected to: " + uristring
 
 io.configure ->
   io.set "transports", ["xhr-polling"]
@@ -53,6 +54,11 @@ io.sockets.on "connection", (socket) ->
 
 app.get "/", (req, res) ->
   res.render "home.ejs"
+
+app.get "/seed", (req, res) ->
+  seeder = require "./lib/seeder"
+  seeder.init()
+  res.send "seeded"
 
 # app.get('/redis', function(request, response) {
 #   client.set('foo', 'bar');
