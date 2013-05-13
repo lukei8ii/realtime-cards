@@ -1,0 +1,15 @@
+{
+  "author": "Shea Hunter",
+  "name": "realtime-cards",
+  "description": "An attempt to create a realtime trading card game simulator",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "express": "3.x",
+    "redis": "*"
+  },
+  "engines": {
+    "node": "0.10.x",
+    "npm": "1.2.x"
+  }
+}
