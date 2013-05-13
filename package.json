@@ -6,7 +6,11 @@
   "private": true,
   "dependencies": {
     "express": "3.x",
-    "redis": "*"
+    "redis": "*",
+    "mongodb": "1.3.x",
+    "mongoose": "3.6.x",
+    "socket.io": "0.9.x",
+    "coffee-script": "1.6.x"
   },
   "engines": {
     "node": "0.10.x",
