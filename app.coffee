@@ -46,8 +46,9 @@ io.configure ->
   io.set "polling duration", 10
 
 io.sockets.on "connection", (socket) ->
-  socket.emit "news",
-    hello: "world"
+  socket.on "message", (msg) ->
+    console.log "Message Received: ", msg
+    socket.broadcast.emit "message", msg
 
   socket.on "my other event", (data) ->
     console.log data

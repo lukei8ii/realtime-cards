@@ -5,8 +5,9 @@
   <%- css('application.css') %>
 </head>
 <body>
-  <h1>This an app</h1>
-  <p>Hello</p>
+  Incoming Chat: <ul id="incomingChatMessages"></ul>
+  <input type="text" id="outgoingChatMessage">
   <%- js('application.js') %>
+  <script src="/socket.io/socket.io.js"></script>
 </body>
 </html>
