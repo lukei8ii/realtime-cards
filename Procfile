@@ -1,1 +1,1 @@
-web: coffee app.coffee
+web: coffee --nodejs --debug app.coffee
