@@ -20,7 +20,9 @@ mincer = new ConnectMincer(
     "assets/stylesheets",
     "assets/javascripts",
     "assets/images",
-    "vendor/javascripts"
+    "vendor/jquery",
+    "vendor/bootstrap/js",
+    "vendor/bootstrap/css"
   ]
 )
 
