@@ -47,11 +47,13 @@ io.configure ->
 
 io.sockets.on "connection", (socket) ->
   socket.on "message", (msg) ->
-    console.log "Message Received: ", msg
-    socket.broadcast.emit "message", msg
+    socket.get "nickname", (err, name) ->
+      console.log "Message Received: ", msg
+      socket.broadcast.emit "message", "[#{name || 'Unknown'}] #{msg}"
 
-  socket.on "my other event", (data) ->
-    console.log data
+  socket.on "set nickname", (name) ->
+    socket.set "nickname", name, ->
+      socket.emit "ready"
 
 require("./routes/index")(app)
 require("./routes/seeder")(app)
