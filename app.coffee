@@ -53,20 +53,8 @@ io.sockets.on "connection", (socket) ->
   socket.on "my other event", (data) ->
     console.log data
 
-app.get "/", (req, res) ->
-  res.render "home.ejs"
-
-app.get "/seed", (req, res) ->
-  seeder = require "./lib/seeder"
-  seeder.init()
-  res.send "seeded"
-
-# app.get('/redis', function(request, response) {
-#   client.set('foo', 'bar');
-#   client.get('foo', function (err, reply) {
-#       console.log(reply.toString()); // Will print `bar`
-#   });
-# });
+require("./routes/index")(app)
+require("./routes/seeder")(app)
 
 port = process.env.PORT or 5000
 server.listen port, ->
