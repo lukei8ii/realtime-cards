@@ -2,7 +2,7 @@ class RTC.ChatboxManager
 
   constructor: (options) ->
     @config =
-      width: 200 #px
+      width: 300 #px
       gap: 20
       maxBoxes: 5
       messageSent: (dest, msg) ->
@@ -74,7 +74,7 @@ class RTC.ChatboxManager
       @showList.push id
       @nameList.push user.first_name
 
-  messageSentCallback: (id, user, msg) ->
+  messageSentCallback: (id, user, msg) =>
     idx = @boxList.indexOf(id)
     @config.messageSent @nameList[idx], msg
 
