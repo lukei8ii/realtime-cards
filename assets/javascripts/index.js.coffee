@@ -21,3 +21,32 @@ $ ->
   $("#setNickname").click (event) ->
     nickname = prompt "Please enter your nickname"
     iosocket.emit "set nickname", nickname
+
+  counter = 0
+  idList = new Array()
+
+  broadcastMessageCallback = (from, msg) ->
+    i = 0
+
+    while i < idList.length
+      manager.addBox idList[i]
+      $("#" + idList[i]).chatbox("option", "boxManager").addMsg from, msg
+      i++
+
+  # chatboxManager is excerpt from the original project
+  # the code is not very clean, I just want to reuse it to manage multiple chatboxes
+  manager = new RTC.ChatboxManager messageSent: broadcastMessageCallback
+
+  $("#link_add").click (event, ui) ->
+    counter++
+    id = "box" + counter
+    idList.push id
+    manager.addBox id,
+      dest: "dest" + counter # not used in demo
+      title: "box" + counter
+      first_name: "First" + counter
+      last_name: "Last" + counter
+
+
+    #you can add your own options too
+    event.preventDefault()

@@ -21,8 +21,12 @@ mincer = new ConnectMincer(
     "assets/javascripts",
     "assets/images",
     "vendor/jquery",
-    "vendor/bootstrap/js",
-    "vendor/bootstrap/css"
+    "components/jquery-ui/ui",
+    "components/jquery-ui/themes/ui-lightness",
+    "components/bootstrap/stuff",
+    "components/bootstrap/docs/assets/js",
+    "vendor/css",
+    "vendor/js"
   ]
 )
 
