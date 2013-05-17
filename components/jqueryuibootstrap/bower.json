@@ -1,9 +1,0 @@
-{
-  "name": "jqueryuibootstrap",
-  "version": "0.0.0",
-  "commit": "7ffa53fbd8eb970cf340ecb4e7f5dd8efb698e81",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/addyosmani/jquery-ui-bootstrap.git"
-  }
-}
