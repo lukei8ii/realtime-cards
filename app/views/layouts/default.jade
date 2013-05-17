@@ -1,0 +1,16 @@
+!!! 5
+html(lang='en')
+  include ../includes/head
+  body
+    .wrapper
+      if user
+        p Hi there, #{user.username}.
+      else
+        a(href='/auth/facebook') Login with Facebook
+      .container
+        .main-content
+          .main-head
+            block main
+          block content
+      .push
+    include ../includes/foot

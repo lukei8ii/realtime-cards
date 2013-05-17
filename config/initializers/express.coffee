@@ -21,7 +21,7 @@ module.exports = (app, passport) ->
   app.use express.logger("dev") if process.env.NODE_ENV isnt "test"
 
   app.set "views", __dirname + "/../../app/views"
-  app.set "view engine", "ejs"
+  app.set "view engine", "jade"
 
   app.configure ->
     # cookieParser should be above session

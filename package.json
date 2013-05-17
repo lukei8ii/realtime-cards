@@ -14,7 +14,7 @@
     "coffee-script": "latest",
     "mincer": "latest",
     "connect-mincer": "latest",
-    "ejs": "latest",
+    "jade": "latest",
     "jsonfile": "latest",
     "underscore": "latest",
     "bcrypt": "latest",
