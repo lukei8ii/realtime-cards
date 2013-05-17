@@ -11,8 +11,9 @@ module.exports = (app, passport, auth) ->
   ), users.authCallback
 
   # home route
-  home = require("../app/controllers/home")
-  app.get "/", auth.requires_login, home.index
+  home = require "../app/controllers/home"
+  # app.get "/", auth.requires_login, home.index
+  app.get "/", home.index
 
   # seeds routes
   seeds = require "../app/controllers/seeds"

@@ -3,7 +3,7 @@ html(lang='en')
   include ../includes/head
   body
     .wrapper
-      if user
+      if #{user}
         p Hi there, #{user.username}.
       else
         a(href='/auth/facebook') Login with Facebook

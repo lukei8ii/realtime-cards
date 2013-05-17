@@ -1,11 +1,12 @@
 express = require "express"
 http = require "http"
 app = express()
-auth = require "./config/middlewares/authorization"
 server = http.createServer(app)
 io = require("socket.io").listen(server)
 passport = require "passport"
 fs = require "fs"
+mongoose = require "mongoose"
+auth = require "./config/middlewares/authorization"
 
 # # bootstrap env config
 # config = require "config"
@@ -33,7 +34,6 @@ require("./config/initializers/passport")(passport)
 require('./config/initializers/socket.io')(io)
 
 # bootstrap db connection
-mongoose = require "mongoose"
 uristring = process.env.MONGOLAB_URI or process.env.MONGOHQ_URL
 mongoose.connect uristring
 
