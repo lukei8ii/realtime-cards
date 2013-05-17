@@ -20,10 +20,7 @@ module.exports = (app, passport) ->
   # don't use logger for test env
   app.use express.logger("dev") if process.env.NODE_ENV isnt "test"
 
-  # set views path, template engine and default layout
-  console.log "views directory = #{__dirname}../../app/views"
-
-  app.set "views", __dirname + "../../app/views"
+  app.set "views", __dirname + "/../../app/views"
   app.set "view engine", "ejs"
 
   app.configure ->
