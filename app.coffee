@@ -1,69 +1,40 @@
-"use strict"
+express = require "express"
+http = require "http"
+app = express()
+auth = require "./config/middlewares/authorization"
+server = http.createServer(app)
+io = require("socket.io").listen(server)
+passport = require "passport"
 
-express       = require "express"
-app           = express()
-server        = require("http").createServer(app)
-io            = require("socket.io").listen(server)
-ConnectMincer = require "connect-mincer"
-mongoose      = require "mongoose"
+# bootstrap env config
+config_reader = require "yaml-config"
+config = config_reader.readConfig "config/application.yaml"
+for attr_name of config
+  process.env[attr_name] ||= config[attr_name]
 
-env           = process.env.NODE_ENV
+# bootstrap mincer config
+require('./config/mincer')(app)
 
-app.use express.logger()
+# bootstrap passport config
+require("./config/passport")(passport)
 
-mincer = new ConnectMincer(
-  root: __dirname
-  production: env is "production"
-  mountPoint: "/assets"
-  manifestFile: __dirname + "/public/assets/manifest.json"
-  paths: [
-    "assets/stylesheets",
-    "assets/javascripts",
-    "assets/images",
-    "vendor/jquery",
-    "components/jquery-ui/ui",
-    "components/jquery-ui/themes/ui-lightness",
-    "components/bootstrap/stuff",
-    "components/bootstrap/docs/assets/js",
-    "vendor/css",
-    "vendor/js"
-  ]
-)
+# bootstrap socket.io config
+require('./config/socket.io')(io)
 
-app.use mincer.assets()
-app.use "/assets", mincer.createServer() if env isnt "production"
-app.set 'view engine', 'ejs'
-
-# var redis = require('redis');
-# var url = require('url');
-# var redisURL = url.parse(process.env.REDISCLOUD_URL);
-# var client = redis.createClient(redisURL.port, redisURL.hostname, {no_ready_check: true});
-# client.auth(redisURL.auth.split(":")[1]);
-
+# bootstrap db connection
 uristring = process.env.MONGOLAB_URI or process.env.MONGOHQ_URL
-mongoose.connect uristring, (err, res) ->
-  if err
-    console.log "ERROR connecting to: " + uristring + ". " + err
-  else
-    console.log "Succeeded connected to: " + uristring
+mongoose.connect uristring
 
-io.configure ->
-  io.set "transports", ["xhr-polling"]
-  io.set "polling duration", 10
+# bootstrap models
+models_path = __dirname + "/app/models"
+fs.readdirSync(models_path).forEach (file) ->
+  require models_path + "/" + file
 
-io.sockets.on "connection", (socket) ->
-  socket.on "message", (msg) ->
-    socket.get "nickname", (err, name) ->
-      console.log "Message Received: ", msg
-      socket.broadcast.emit "message", "[#{name || 'Unknown'}] #{msg}"
+# bootstrap express config
+require('./config/express')(app, passport)
 
-  socket.on "set nickname", (name) ->
-    socket.set "nickname", name, ->
-      socket.emit "ready"
+# bootstrap routes
+require("./config/routes")(app, passport, auth)
 
-require("./routes/index")(app)
-require("./routes/seeder")(app)
-
-port = process.env.PORT or 5000
-server.listen port, ->
-  console.log "Listening on " + port
+server.listen app.get("port"), ->
+  console.log "Express server listening on port " + app.get("port")

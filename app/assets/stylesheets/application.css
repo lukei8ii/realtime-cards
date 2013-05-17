@@ -1,0 +1,7 @@
+/*
+ *= require bootstrap
+ *= require jquery-ui
+ *= require jquery.ui.chatbox
+ *= require_self
+ *= require_tree ./app
+ */

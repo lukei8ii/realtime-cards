@@ -2,23 +2,32 @@
   "author": "Shea Hunter",
   "name": "realtime-cards",
   "description": "An attempt to create a realtime trading card game simulator",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": true,
   "dependencies": {
-    "express": "3.x",
-    "redis": "*",
-    "mongodb": "1.3.x",
-    "mongoose": "3.6.x",
-    "socket.io": "0.9.x",
-    "less": "1.3.x",
-    "coffee-script": "1.6.x",
-    "mincer": "0.4.x",
-    "connect-mincer": "0.2.x",
-    "ejs": "0.8.x",
-    "jsonfile": "0.0.x"
+    "express": "latest",
+    "redis": "latest",
+    "mongodb": "latest",
+    "mongoose": "latest",
+    "socket.io": "latest",
+    "less": "latest",
+    "coffee-script": "latest",
+    "mincer": "latest",
+    "connect-mincer": "latest",
+    "ejs": "latest",
+    "jsonfile": "latest",
+    "underscore": "latest",
+    "bcrypt": "latest",
+    "passport": "latest",
+    "passport-facebook": "latest",
+    "yaml-config": "latest",
+    "connect-flash": "latest"
   },
   "engines": {
     "node": "0.10.x",
     "npm": "1.2.x"
+  },
+  "devDependencies": {
+    "nodemon": "latest"
   }
 }

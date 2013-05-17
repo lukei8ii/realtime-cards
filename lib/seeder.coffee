@@ -1,4 +1,4 @@
-Card = require "../models/card"
+Card = require "../app/models/card"
 jf = require "jsonfile"
 
 class Seeder
