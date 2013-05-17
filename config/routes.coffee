@@ -12,7 +12,7 @@ module.exports = (app, passport, auth) ->
 
   # home route
   home = require("../app/controllers/home")
-  app.get "/", auth.requirees_login, home.index
+  app.get "/", auth.requires_login, home.index
 
   # seeds routes
   seeds = require "../app/controllers/seeds"

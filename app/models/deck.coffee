@@ -1,4 +1,4 @@
-class RTC.Deck
-  constructor: ->
+# class RTC.Deck
+#   constructor: ->
 
-  @find_by_name: (name) ->
+#   @find_by_name: (name) ->

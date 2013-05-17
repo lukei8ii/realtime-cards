@@ -1,3 +1,3 @@
-class RTC.Entity
-  constructor: ->
+# class RTC.Entity
+#   constructor: ->
 

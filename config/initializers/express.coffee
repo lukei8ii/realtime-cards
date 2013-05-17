@@ -2,10 +2,10 @@
 Module dependencies.
 ###
 flash = require "connect-flash"
-express = require("express")
+express = require "express"
 
 module.exports = (app, passport) ->
-  app.set "port", process.env.PORT or 3000
+  app.set "port", process.env.PORT or 5000
   app.set "showStackError", true
 
   # should be placed before express.static
@@ -21,25 +21,19 @@ module.exports = (app, passport) ->
   app.use express.logger("dev") if process.env.NODE_ENV isnt "test"
 
   # set views path, template engine and default layout
-  app.set "views", config.root + "/app/views"
+  app.set "views", __dirname + "/app/views"
   app.set "view engine", "ejs"
 
   app.configure ->
     # cookieParser should be above session
-    app.use express.cookieParser()
+    app.use express.cookieParser "maxiM3ga1on"
 
     # bodyParser should be above methodOverride
     app.use express.bodyParser()
     app.use express.methodOverride()
 
     # express/mongo session storage
-    app.use express.session(
-      secret: "noobjs"
-      store: new mongoStore(
-        url: config.db
-        collection: "sessions"
-      )
-    )
+    app.use express.session "maxiM3ga1on"
 
     # connect flash for flash messages
     app.use flash()

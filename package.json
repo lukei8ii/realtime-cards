@@ -20,7 +20,8 @@
     "bcrypt": "latest",
     "passport": "latest",
     "passport-facebook": "latest",
-    "yaml-config": "latest",
+    "yaml": "latest,"
+    "config": "latest",
     "connect-flash": "latest"
   },
   "engines": {

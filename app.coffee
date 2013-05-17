@@ -5,33 +5,40 @@ auth = require "./config/middlewares/authorization"
 server = http.createServer(app)
 io = require("socket.io").listen(server)
 passport = require "passport"
+fs = require "fs"
 
-# bootstrap env config
-config_reader = require "yaml-config"
-config = config_reader.readConfig "config/application.yaml"
-for attr_name of config
-  process.env[attr_name] ||= config[attr_name]
+# # bootstrap env config
+# config = require "config"
 
-# bootstrap mincer config
-require('./config/mincer')(app)
+# console.log config
 
-# bootstrap passport config
-require("./config/passport")(passport)
+# for attr_name in config
+#   # console.log "attr_name = #{attr_name}"
+#   process.env[attr_name] ||= config[attr_name]
 
-# bootstrap socket.io config
-require('./config/socket.io')(io)
-
-# bootstrap db connection
-uristring = process.env.MONGOLAB_URI or process.env.MONGOHQ_URL
-mongoose.connect uristring
+# console.log process.env
 
 # bootstrap models
 models_path = __dirname + "/app/models"
 fs.readdirSync(models_path).forEach (file) ->
   require models_path + "/" + file
 
+# bootstrap mincer config
+require('./config/initializers/mincer')(app)
+
+# bootstrap passport config
+require("./config/initializers/passport")(passport)
+
+# bootstrap socket.io config
+require('./config/initializers/socket.io')(io)
+
+# bootstrap db connection
+mongoose = require "mongoose"
+uristring = process.env.MONGOLAB_URI or process.env.MONGOHQ_URL
+mongoose.connect uristring
+
 # bootstrap express config
-require('./config/express')(app, passport)
+require('./config/initializers/express')(app, passport)
 
 # bootstrap routes
 require("./config/routes")(app, passport, auth)
