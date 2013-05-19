@@ -1,11 +1,11 @@
 ConnectMincer = require "connect-mincer"
 
-module.exports = (app) ->
+module.exports = (app, root) ->
   mincer = new ConnectMincer(
-    root: __dirname
+    root: root
     production: process.env.NODE_ENV is "production"
     mountPoint: "/assets"
-    manifestFile: __dirname + "/public/assets/manifest.json"
+    manifestFile: "#{root}/public/assets/manifest.json"
     paths: [
       "app/assets/stylesheets",
       "app/assets/javascripts",

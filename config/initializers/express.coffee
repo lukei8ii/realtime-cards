@@ -44,6 +44,9 @@ module.exports = (app, passport) ->
     # routes should be at the last
     app.use app.router
 
+    # app.locals.numberToCurrency = (val) ->
+    #   5
+
     # assume "not found" in the error msgs
     # is a 404. this is somewhat silly, but
     # valid, you can do whatever you like, set
