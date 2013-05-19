@@ -22,7 +22,8 @@
     "passport-facebook": "latest",
     "yaml": "latest",
     "config": "latest",
-    "connect-flash": "latest"
+    "connect-flash": "latest",
+    "grunt": "*"
   },
   "repository": {
     "type": "git",

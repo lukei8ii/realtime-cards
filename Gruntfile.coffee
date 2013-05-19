@@ -1,6 +1,6 @@
 module.exports = (grunt) ->
   grunt.registerTask "heroku", "Precompile assets for Heroku", ->
-    Mincer = require("mincer")
+    Mincer = require "mincer"
     env = new Mincer.Environment "./"
 
     env.appendPath "app/assets/stylesheets"
