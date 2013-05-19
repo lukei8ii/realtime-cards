@@ -4,6 +4,7 @@ module.exports = (app) ->
       # variables
       res.locals.title = "Realtime Cards"
       res.locals.req = req
+      debugger
       res.locals.current_user = req.user
 
       # methods
@@ -20,6 +21,6 @@ module.exports = (app) ->
 
 login_link = (current_user) ->
   if current_user
-    "<p>Hi there, #{user.username}.</p>"
+    "<p>Hi there, #{current_user.name}.</p>"
   else
     "<a href='/auth/facebook'>Login with Facebook</a>"
