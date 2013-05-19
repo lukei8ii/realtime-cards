@@ -24,11 +24,16 @@
     "config": "latest",
     "connect-flash": "latest"
   },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/lukei8ii/realtime-cards"
+  },
   "engines": {
     "node": "0.10.x",
     "npm": "1.2.x"
   },
   "devDependencies": {
-    "nodemon": "latest"
+    "nodemon": "latest",
+    "grunt": "~0.4.x"
   }
 }
