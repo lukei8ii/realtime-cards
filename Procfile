@@ -1,1 +1,0 @@
-web: coffee --debug app.coffee

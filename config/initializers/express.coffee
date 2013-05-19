@@ -4,7 +4,7 @@ Module dependencies.
 flash = require "connect-flash"
 express = require "express"
 
-module.exports = (app, passport) ->
+module.exports = (app, passport, helpers) ->
   app.set "port", process.env.PORT or 5000
   app.set "showStackError", true
 
@@ -40,6 +40,9 @@ module.exports = (app, passport) ->
     # use passport session
     app.use passport.initialize()
     app.use passport.session()
+
+    # helpers
+    app.use helpers.initialize()
 
     # routes should be at the last
     app.use app.router

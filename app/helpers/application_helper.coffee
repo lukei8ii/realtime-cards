@@ -1,10 +1,9 @@
-module.exports = (app) ->
-  helpers = ->
+module.exports = ->
+  initialize: ->
     (req, res, next) ->
       # variables
       res.locals.title = "Realtime Cards"
       res.locals.req = req
-      debugger
       res.locals.current_user = req.user
 
       # methods
@@ -16,8 +15,6 @@ module.exports = (app) ->
         res.locals.success = req.flash "success"
         res.locals.warning = req.flash "warning"
       next()
-
-  app.use helpers()
 
 login_link = (current_user) ->
   if current_user

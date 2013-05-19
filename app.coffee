@@ -24,14 +24,18 @@ models_path = __dirname + "/app/models"
 fs.readdirSync(models_path).forEach (file) ->
   require models_path + "/" + file
 
-# bootstrap helpers
-require("./app/helpers/application_helper")(app)
-
 # bootstrap mincer config
 require('./config/initializers/mincer')(app, __dirname)
 
+# bootstrap express config
+app_helper = require "./app/helpers/application_helper"
+require('./config/initializers/express')(app, passport, app_helper())
+
 # bootstrap passport config
 require("./config/initializers/passport")(passport)
+
+# # bootstrap helpers
+# require("./app/helpers/application_helper")(app)
 
 # bootstrap socket.io config
 require('./config/initializers/socket.io')(io)
@@ -39,9 +43,6 @@ require('./config/initializers/socket.io')(io)
 # bootstrap db connection
 uristring = process.env.MONGOLAB_URI or process.env.MONGOHQ_URL
 mongoose.connect uristring
-
-# bootstrap express config
-require('./config/initializers/express')(app, passport)
 
 # bootstrap routes
 require("./config/routes")(app, passport, auth)
