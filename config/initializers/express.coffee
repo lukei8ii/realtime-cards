@@ -4,7 +4,7 @@ Module dependencies.
 flash = require "connect-flash"
 express = require "express"
 
-module.exports = (app, passport, helpers) ->
+module.exports = (app, redisSessionStore, passport, helpers) ->
   app.set "port", process.env.PORT or 5000
   app.set "showStackError", true
 
@@ -25,14 +25,19 @@ module.exports = (app, passport, helpers) ->
 
   app.configure ->
     # cookieParser should be above session
-    app.use express.cookieParser "maxiM3ga1on"
+    app.use express.cookieParser process.env.SECRET
 
     # bodyParser should be above methodOverride
     app.use express.bodyParser()
     app.use express.methodOverride()
 
-    # express/mongo session storage
-    app.use express.session "maxiM3ga1on"
+    # redis session storage
+    app.use express.session(
+      key: process.env.COOKIE
+      secret: process.env.SECRET
+      # cookie: maxAge: 1000*60*60
+      store: redisSessionStore
+    )
 
     # connect flash for flash messages
     app.use flash()

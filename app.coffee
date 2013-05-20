@@ -7,6 +7,7 @@ passport = require "passport"
 fs = require "fs"
 mongoose = require "mongoose"
 auth = require "./config/middlewares/authorization"
+redisSessionStore = require("./config/initializers/redis")(express)
 
 # # bootstrap env config
 # config = require "config"
@@ -29,16 +30,13 @@ require('./config/initializers/mincer')(app, __dirname)
 
 # bootstrap express config
 app_helper = require "./app/helpers/application_helper"
-require('./config/initializers/express')(app, passport, app_helper())
+require('./config/initializers/express')(app, redisSessionStore, passport, app_helper())
 
 # bootstrap passport config
 require("./config/initializers/passport")(passport)
 
-# # bootstrap helpers
-# require("./app/helpers/application_helper")(app)
-
 # bootstrap socket.io config
-require('./config/initializers/socket.io')(io)
+require('./config/initializers/socket.io')(io, redisSessionStore)
 
 # bootstrap db connection
 uristring = process.env.MONGOLAB_URI or process.env.MONGOHQ_URL

@@ -1,5 +1,6 @@
 module.exports = (grunt) ->
   grunt.registerTask "heroku", "Precompile assets for Heroku", ->
+    debugger
     Mincer = require "mincer"
     env = new Mincer.Environment "./"
 

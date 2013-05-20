@@ -17,13 +17,14 @@
     "jade": "latest",
     "jsonfile": "latest",
     "underscore": "latest",
-    "bcrypt": "latest",
     "passport": "latest",
     "passport-facebook": "latest",
     "yaml": "latest",
     "config": "latest",
     "connect-flash": "latest",
-    "grunt": "*"
+    "grunt": "latest",
+    "passport.socketio": "latest",
+    "connect-redis": "latest"
   },
   "repository": {
     "type": "git",

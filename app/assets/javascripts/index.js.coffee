@@ -1,15 +1,21 @@
-# $ ->
-#   nickname = "Unknown"
-#   iosocket = io.connect()
-#   iosocket.on "connect", ->
-#     # $("#clients").append $("<li>#{nickname}</li>")
+$ ->
+  user_id = $("#current_user").data("id")
+  # return unless user_id
 
-#     iosocket.on "users", (users) ->
-#       $("#clients").empty()
+  iosocket = io.connect()
 
-#       $.each users, (index, user) ->
-#         content = (if user isnt nickname then "<a href='#' data-user='#{user}'>#{user}</a>" else user)
-#         $("#clients").append $("<li>#{content}</li>")
+  iosocket.on "error", (reason) ->
+    console.error "Unable to connect Socket.IO", reason
+
+  iosocket.on "connect", ->
+    console.log "Connected to Socket.IO"
+
+  iosocket.on "users", (users) ->
+    $("#clients").empty()
+
+    $.each users, (index, user) ->
+      content = (if user._id isnt user_id then "<a href='#' data-id='#{user._id}'>#{user.name}</a>" else user.name)
+      $("#clients").append $("<li>#{content}</li>")
 
 #     iosocket.on "message", (message) ->
 #       test = 1
