@@ -12,50 +12,50 @@ class RTC.ChatboxManager
     $.extend @config, options
 
     # list of all opened boxes
-    @boxList = []
+    @box_list = []
 
     # list of boxes shown on the page
-    @showList = []
+    @show_list = []
 
-    # list of first names, for in-page demo
-    @nameList = []
+    # list of user ids
+    @user_list = []
 
   delBox: (id) ->
     # TODO
 
   getNextOffset: ->
-    (@config.width + @config.gap) * @showList.length
+    (@config.width + @config.gap) * @show_list.length
 
   boxClosedCallback: (id) ->
     # close button in the titlebar is clicked
-    idx = @showList.indexOf(id)
+    idx = @show_list.indexOf(id)
 
     if idx isnt -1
-      @showList.splice idx, 1
+      @show_list.splice idx, 1
       diff = @config.width + @config.gap
       i = idx
 
-      while i < @showList.length
-        offset = $("#" + @showList[i]).chatbox("option", "offset")
-        $("#" + @showList[i]).chatbox "option", "offset", offset - diff
+      while i < @show_list.length
+        offset = $("#" + @show_list[i]).chatbox("option", "offset")
+        $("#" + @show_list[i]).chatbox "option", "offset", offset - diff
         i++
     else
       alert "should not happen: " + id
 
   # caller should guarantee the uniqueness of id
-  addBox: (id, user, name) ->
-    idx1 = @showList.indexOf(id)
-    idx2 = @boxList.indexOf(id)
+  addBox: (id, user) ->
+    idx1 = @show_list.indexOf(id)
+    idx2 = @box_list.indexOf(id)
 
     unless idx1 is -1
     # found one in show box, do nothing
     else unless idx2 is -1
       # exists, but hidden
-      # show it and put it back to @showList
+      # show it and put it back to @show_list
       $("#" + id).chatbox "option", "offset", @getNextOffset()
       manager = $("#" + id).chatbox("option", "boxManager")
       manager.toggleBox()
-      @showList.push id
+      @show_list.push id
     else
       el = document.createElement("div")
       el.setAttribute "id", id
@@ -63,20 +63,20 @@ class RTC.ChatboxManager
       $(el).chatbox
         id: id
         user: user
-        title: user.first_name + " " + user.last_name
+        title: user.name
         hidden: false
         width: @config.width
         offset: @getNextOffset()
         messageSent: @messageSentCallback
         boxClosed: @boxClosedCallback
 
-      @boxList.push id
-      @showList.push id
-      @nameList.push user.first_name
+      @box_list.push id
+      @show_list.push id
+      @user_list.push user._id
 
   messageSentCallback: (id, user, msg) =>
-    idx = @boxList.indexOf(id)
-    @config.messageSent @nameList[idx], msg
+    idx = @box_list.indexOf(id)
+    @config.messageSent @user_list[idx], msg
 
   # not used in demo
   dispatch: (id, user, msg) ->
