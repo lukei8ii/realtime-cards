@@ -26,7 +26,7 @@ class RTC.ChatboxManager
   getNextOffset: ->
     (@config.width + @config.gap) * @show_list.length
 
-  boxClosedCallback: (id) ->
+  boxClosedCallback: (id) =>
     # close button in the titlebar is clicked
     idx = @show_list.indexOf(id)
 
