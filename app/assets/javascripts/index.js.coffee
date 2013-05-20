@@ -32,12 +32,13 @@ $ ->
   id_list = []
 
   messageSentCallback = (dest, msg) ->
-    i = 0
+    alert "send to user: #{dest}, msg: #{msg}"
+    # i = 0
 
-    while i < id_list.length
-      manager.addBox idList[i]
-      $("#" + idList[i]).chatbox("option", "boxManager").addMsg from, msg
-      i++
+    # while i < id_list.length
+    #   manager.addBox idList[i]
+    #   $("#" + idList[i]).chatbox("option", "boxManager").addMsg from, msg
+    #   i++
 
 
   manager = new RTC.ChatboxManager messageSent: messageSentCallback
@@ -54,3 +55,11 @@ $ ->
     id_list.push id
 
     manager.addBox id, user
+
+   $("#outgoingChatMessage").keypress (event) ->
+     if event.which is 13
+       event.preventDefault()
+       message = $("#outgoingChatMessage").val()
+       iosocket.send message
+       $("#incomingChatMessages").append $("<li></li>").text("[#{nickname}] #{message}")
+       $("#outgoingChatMessage").val ""
