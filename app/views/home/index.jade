@@ -1,6 +1,10 @@
 extends ../layouts/application
 
 block sidebar
-  .well
-    h4 Friends
+  #friends.well
+    h4
+      | Friends (
+      span#user_count 0
+      | )
+    hr
     ul#clients.unstyled

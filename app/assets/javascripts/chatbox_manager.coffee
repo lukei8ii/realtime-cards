@@ -43,6 +43,7 @@ class RTC.ChatboxManager
 
     @iosocket.on "users", (users) =>
       @user_list = users
+      $("#user_count").text(users.length)
       @current_user ||= @getUserById @current_user_id
 
       $("#clients").empty()
