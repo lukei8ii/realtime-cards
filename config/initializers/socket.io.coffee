@@ -6,7 +6,6 @@ _ = require "underscore"
 module.exports = (io, redisSessionStore) ->
   users = []
 
-  # socket.io
   io.configure ->
     io.set "transports", ["xhr-polling"]
     io.set "polling duration", 10
@@ -36,8 +35,10 @@ module.exports = (io, redisSessionStore) ->
       console.log "users: ", users
       io.sockets.emit "users", users
 
-    socket.on "private message", (message) ->
+    socket.on "private", (data) ->
       passportSocketIo.filterSocketsByUser(io, (user) ->
-        user._id is message.to
+        console.log "user._id: #{user._id}, data.to: #{data.to}"
+        user.id is data.to
       ).forEach (s) ->
-        s.emit "private message", message
+        console.log "emitting private"
+        s.emit "private", { from: current_user._id, message: data.message }

@@ -62,3 +62,7 @@
     white-space: -o-pre-wrap;   /* Opera 7 */
     word-wrap: break-word;      /* IE */
 }
+
+.ui-chatbox-msg p {
+    margin: 0;
+}
