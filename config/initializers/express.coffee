@@ -50,7 +50,7 @@ module.exports = (app, redisSessionStore, passport, helpers) ->
     app.use helpers.initialize()
 
     # routes should be at the last
-    app.use app.router
+    # app.use app.router
 
     # app.locals.numberToCurrency = (val) ->
     #   5

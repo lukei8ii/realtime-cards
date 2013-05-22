@@ -9,6 +9,7 @@ module.exports = (app, passport, auth) ->
   app.get "/auth/facebook/callback", passport.authenticate("facebook",
     failureRedirect: "/"
   ), users.authCallback
+  app.get "/profile", users.profile
 
   # home route
   home = require "../app/controllers/home"

@@ -7,7 +7,7 @@ module.exports = ->
       res.locals.current_user = req.user
 
       # methods
-      res.locals.login_link = login_link
+      # res.locals.login_link = login_link
 
       if typeof req.flash isnt "undefined"
         res.locals.info = req.flash "info"
@@ -16,8 +16,8 @@ module.exports = ->
         res.locals.warning = req.flash "warning"
       next()
 
-login_link = (current_user) ->
-  if current_user
-    "<p id='current_user' data-id='#{current_user._id}'>Hi there, #{current_user.name}.</p>"
-  else
-    "<a href='/auth/facebook'>Login with Facebook</a>"
+# login_link = (current_user) ->
+#   if current_user
+#     "<p id='current_user' data-id='#{current_user._id}'>Welcome, #{current_user.name}.</p>"
+#   else
+#     "<a href='/auth/facebook'>Login with Facebook</a>"

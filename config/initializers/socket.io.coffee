@@ -24,15 +24,15 @@ module.exports = (io, redisSessionStore) ->
   io.sockets.on "connection", (socket) ->
     current_user = socket.handshake.user
     console.log "user connected: ", current_user.name
-    users.push current_user
-    console.log "users: ", users
+    users.push current_user unless _.findWhere(users, { id: current_user.id })
+    console.log "user count: ", users.length
     io.sockets.emit "users", users
 
     socket.on "disconnect", ->
       index = users.indexOf(current_user)
       users.splice(index, 1)
       console.log "user disconnected: ", current_user.name
-      console.log "users: ", users
+      console.log "user count: ", users.length
       io.sockets.emit "users", users
 
     socket.on "private", (data) ->

@@ -8,4 +8,7 @@ exports.authCallback = (req, res, next) ->
 
 exports.logout = (req, res) ->
   req.logout()
-  res.redirect "/login"
+  res.redirect "/"
+
+exports.profile = (req, res) ->
+  res.render "users/profile"
