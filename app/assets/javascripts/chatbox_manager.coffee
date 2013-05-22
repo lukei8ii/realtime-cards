@@ -117,7 +117,7 @@ class RTC.ChatboxManager
 
   messageSentCallback: (box_id, user, message) =>
     @iosocket.emit "private", { to: user._id, message: message }
-    $("##{box_id}").chatbox("option", "boxManager").addMsg @current_user.name, message
+    $("##{box_id}").chatbox("option", "boxManager").addMsg "me", message
 
   messageReceived: (box_id, user, message) ->
-    $("##{box_id}").chatbox("option", "boxManager").addMsg user.name, message
+    $("##{box_id}").chatbox("option", "boxManager").addMsg user.facebook.first_name, message, true

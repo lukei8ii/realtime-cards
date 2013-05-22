@@ -34,7 +34,7 @@
                 init: function(elem) {
                     this.elem = elem;
                 },
-                addMsg: function(peer, msg) {
+                addMsg: function(peer, msg, incoming) {
                     var self = this;
                     var box = self.elem.uiChatboxLog;
                     var e = document.createElement('div');
@@ -58,6 +58,10 @@
                     $(msgElement).text(msg);
                     p.appendChild(msgElement);
                     $(e).addClass("ui-chatbox-msg");
+                    if (incoming)
+                        $(e).addClass("text-error");
+                    else
+                        $(e).addClass("text-info")
                     $(e).fadeIn();
                     self._scrollToBottom();
 
