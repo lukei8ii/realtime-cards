@@ -38,6 +38,9 @@ class RTC.ChatboxManager
     @iosocket.on "error", (reason) ->
       console.error "Unable to connect Socket.IO", reason
 
+    @iosocket.on "disconnect", ->
+      @iosocket.socket.reconnect()
+
     @iosocket.on "connect", ->
       console.log "Connected to Socket.IO"
 
