@@ -7,7 +7,10 @@ passport = require "passport"
 fs = require "fs"
 mongoose = require "mongoose"
 auth = require "./config/middlewares/authorization"
+session_extender = require "./config/middlewares/session_extender"
 redisSessionStore = require("./config/initializers/redis")(express)
+app_helper = require("./app/helpers/application_helper")()
+nap = require "nap"
 
 # # bootstrap env config
 # config = require "config"
@@ -26,11 +29,13 @@ fs.readdirSync(models_path).forEach (file) ->
   require models_path + "/" + file
 
 # bootstrap mincer config
-require('./config/initializers/mincer')(app, __dirname)
+# require('./config/initializers/mincer')(app, __dirname)
+
+# bootstrap nap config
+require('./config/initializers/nap')(nap)
 
 # bootstrap express config
-app_helper = require "./app/helpers/application_helper"
-require('./config/initializers/express')(app, redisSessionStore, passport, app_helper())
+require('./config/initializers/express')(app, redisSessionStore, passport, session_extender, app_helper, nap)
 
 # bootstrap passport config
 require("./config/initializers/passport")(passport)

@@ -34,34 +34,38 @@ class RTC.ChatboxManager
 
   initializeSocketIo: ->
     @iosocket = io.connect()
+    # io.connect "http://localhost",
+    #   reconnect: true
+    #   "reconnection delay": 500
+    #   "max reconnection attempts": 10
 
-    @iosocket.on "error", (reason) ->
-      console.error "Unable to connect Socket.IO", reason
-
-    @iosocket.on "disconnect", ->
-      @iosocket.socket.reconnect()
-
-    @iosocket.on "connect", ->
+    @iosocket.on "connect", =>
       console.log "Connected to Socket.IO"
 
-    @iosocket.on "users", (users) =>
-      @user_list = users
-      $("#user_count").text(users.length)
-      @current_user ||= @getUserById @current_user_id
+      @iosocket.on "error", (reason) ->
+        console.error "Unable to connect Socket.IO", reason
 
-      $("#clients").empty()
+      @iosocket.on "disconnect", ->
+        console.log "Disconnected from Socket.IO"
 
-      $.each users, (index, user) ->
-        # content = if user._id isnt user_id
-        content = "<a href='#' rel='user' data-user_id='#{user._id}'>#{user.name}</a>"
-        # else user.name
+      @iosocket.on "users", (users) =>
+        @user_list = users
+        $("#user_count").text(users.length)
+        @current_user ||= @getUserById @current_user_id
 
-        $("#clients").append $("<li>#{content}</li>")
+        $("#clients").empty()
 
-    @iosocket.on "private", (data) =>
-      box_id = @getBoxId data.from
-      user = @getUserById data.from
-      @addBox box_id, user, false, data.message
+        $.each users, (index, user) ->
+          # content = if user._id isnt user_id
+          content = "<a href='#' rel='user' data-user_id='#{user._id}'>#{user.name}</a>"
+          # else user.name
+
+          $("#clients").append $("<li>#{content}</li>")
+
+      @iosocket.on "private", (data) =>
+        box_id = @getBoxId data.from
+        user = @getUserById data.from
+        @addBox box_id, user, false, data.message
 
   delBox: (id) ->
     # TODO

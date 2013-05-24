@@ -16,3 +16,6 @@ npm-debug.log
 
 .DS_Store
 Procfile.dev
+
+public/assets/*.css
+public/assets/*.js
