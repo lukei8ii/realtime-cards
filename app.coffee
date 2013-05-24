@@ -28,14 +28,11 @@ models_path = __dirname + "/app/models"
 fs.readdirSync(models_path).forEach (file) ->
   require models_path + "/" + file
 
-# bootstrap mincer config
-# require('./config/initializers/mincer')(app, __dirname)
-
 # bootstrap nap config
 require('./config/initializers/nap')(nap)
 
 # bootstrap express config
-require('./config/initializers/express')(app, redisSessionStore, passport, session_extender, app_helper, nap)
+require('./config/initializers/express')(app, __dirname, redisSessionStore, passport, session_extender, app_helper, nap)
 
 # bootstrap passport config
 require("./config/initializers/passport")(passport)
