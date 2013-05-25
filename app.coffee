@@ -10,29 +10,17 @@ auth = require "./config/middlewares/authorization"
 session_extender = require "./config/middlewares/session_extender"
 redisSessionStore = require("./config/initializers/redis")(express)
 app_helper = require("./app/helpers/application_helper")()
-nap = require "nap"
-
-# # bootstrap env config
-# config = require "config"
-
-# console.log config
-
-# for attr_name in config
-#   # console.log "attr_name = #{attr_name}"
-#   process.env[attr_name] ||= config[attr_name]
-
-# console.log process.env
 
 # bootstrap models
 models_path = __dirname + "/app/models"
 fs.readdirSync(models_path).forEach (file) ->
   require models_path + "/" + file
 
-# bootstrap nap config
-require('./config/initializers/nap')(nap)
+# bootstrap mincer config
+require('./config/initializers/mincer')(app, __dirname)
 
 # bootstrap express config
-require('./config/initializers/express')(app, __dirname, redisSessionStore, passport, session_extender, app_helper, nap)
+require('./config/initializers/express')(app, __dirname, redisSessionStore, passport, session_extender, app_helper)
 
 # bootstrap passport config
 require("./config/initializers/passport")(passport)

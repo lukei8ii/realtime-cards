@@ -1,8 +1,8 @@
 /*
- *= require bootstrap
- *= require jquery-ui
- *= require jquery.ui.theme
- *= require jquery.ui.chatbox
- *= require_self
- *= require_tree ./app
- */
+*= require bootstrap
+*= require jquery-ui
+*= require jquery.ui.theme
+*= require jquery.ui.chatbox
+*= require_self
+*= require_tree .
+*/

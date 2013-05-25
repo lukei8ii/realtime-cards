@@ -1,10 +1,7 @@
-###
-Module dependencies.
-###
 flash = require "connect-flash"
 express = require "express"
 
-module.exports = (app, root, redisSessionStore, passport, session_extender, helpers, nap) ->
+module.exports = (app, root, redisSessionStore, passport, session_extender, helpers) ->
   app.set "port", process.env.PORT or 5000
   app.set "showStackError", true
 
@@ -49,16 +46,13 @@ module.exports = (app, root, redisSessionStore, passport, session_extender, help
     # session extender
     app.use session_extender.extend_session
 
-    # assets
-    app.use nap.middleware if process.env.NODE_ENV is "development"
-
     # helpers
     app.use helpers.initialize()
 
     # routes should be at the last
     # app.use app.router
 
-    app.use express.static(path.join(root, "public"))
+    # app.use express.static(path.join(root, "public"))
 
     # app.locals.numberToCurrency = (val) ->
     #   5

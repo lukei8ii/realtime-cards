@@ -2,7 +2,12 @@ module.exports = (nap) ->
   nap
     gzip: true
     assets:
+      # js:
+      #   all: ["vendor/js/jquery.js", "components/jquery-ui/jquery-ui.js", "components/jquery.ui.widget.js", "components/bootstrap/js/*.js", "vendor/js/jquery.ui.chatbox.js", "app/assets/javascripts/*.coffee"]
       js:
-        all: ["/app/assets/javascripts/*.coffee", "components/jquery-ui/ui/*.js", "components/bootstrap/docs/assets/js/*.js", "vendor/js/**/*.js" ]
+        all: ["vendor/js/jquery.js"]
+
+      # css:
+      #   all: ["components/bootstrap/stuff/bootstrap.less", "vendor/css/jquery-ui.css", "components/jquery-ui-bootstrap/jquery.ui.theme.css", "vendor/css/jquery.ui.chatbox.css", "app/assets/stylesheets/*.less"]
       css:
-        all: ["/app/assets/stylesheets/**/*.less", "components/jquery-ui-bootstrap/*.css", "components/bootstrap/stuff/*.css", "vendor/css/*.css"]
+        all: ["components/bootstrap/less/bootstrap.less"]
