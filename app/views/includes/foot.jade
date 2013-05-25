@@ -1,3 +1,6 @@
-//- != js('application.js')
-script(src='/assets/application.js')
+if (env == 'production')
+  script(src='/assets/application.js')
+else
+  != js('application.js')
+
 script(src='/socket.io/socket.io.js')

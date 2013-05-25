@@ -1,5 +1,9 @@
 head
   meta(charset='utf-8')
-  //- != css('application.css')
-  link(href='/assets/application.css', rel='stylesheet')
+
+  if (env == 'production')
+    link(href='/assets/application.css', rel='stylesheet')
+  else
+    != css('application.css')
+
   title=title

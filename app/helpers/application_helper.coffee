@@ -5,6 +5,7 @@ module.exports = ->
       res.locals.title = "Realtime Cards"
       res.locals.req = req
       res.locals.current_user = req.user
+      res.locals.env = process.env.NODE_ENV
 
       # methods
       # res.locals.login_link = login_link
