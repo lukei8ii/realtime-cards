@@ -4,12 +4,33 @@ module.exports = (grunt) ->
     mince:
       js:
         src: "application.js"
-        include: ["app/assets/javascripts", "vendor/js", "components/jquery-ui/ui", "components/bootstrap/js"],
+        include: ["app/assets/javascripts", "vendor/js", "vendor/jquery-ui/ui", "vendor/bootstrap/js"],
         dest: "public/assets/application.js"
       css:
         src: "application.css"
-        include: ["app/assets/stylesheets", "components/bootstrap/stuff", "vendor/css", "components/jquery-ui-bootstrap"],
+        include: ["app/assets/stylesheets", "vendor/bootstrap/main", "vendor/css", "vendor/jquery-ui-bootstrap"],
         dest: "public/assets/application.css"
+    copy:
+      main:
+        files: [
+          expand: true
+          src: ["app/assets/images/*"]
+          dest: "public/assets/"
+          flatten: true
+          filter: "isFile"
+        ,
+          expand: true
+          src: ["vendor/bootstrap/img/*"]
+          dest: "public/assets/"
+          flatten: true
+          filter: "isFile"
+        ,
+          expand: true
+          src: ["vendor/jquery-ui-bootstrap/*.png"]
+          dest: "public/assets/"
+          flatten: true
+          filter: "isFile"
+        ]
     uglify:
       options:
         mangle: false
@@ -25,6 +46,7 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks "grunt-mincer"
   grunt.loadNpmTasks "grunt-contrib-uglify"
   grunt.loadNpmTasks "grunt-contrib-cssmin"
+  grunt.loadNpmTasks "grunt-contrib-copy"
 
-  grunt.registerTask "heroku", ["mince", "uglify", "cssmin"]
-  grunt.registerTask "dev", ["mince"]
+  grunt.registerTask "heroku", ["mince", "copy", "uglify", "cssmin"]
+  grunt.registerTask "dev", ["mince", "copy"]

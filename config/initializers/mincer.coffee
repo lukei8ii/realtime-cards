@@ -7,8 +7,8 @@ module.exports = (app, root) ->
     mountPoint: "/assets"
     manifestFile: "#{root}/public/assets/manifest.json"
     paths: [
-      "vendor/js", "components/jquery-ui/ui", "components/bootstrap/js", "app/assets/javascripts",
-      "components/bootstrap/stuff", "vendor/css", "components/jquery-ui-bootstrap", "app/assets/stylesheets"
+      "vendor/js", "vendor/jquery-ui/ui", "vendor/bootstrap/js", "app/assets/javascripts",
+      "vendor/bootstrap/main", "vendor/css", "vendor/jquery-ui-bootstrap", "app/assets/stylesheets"
     ]
   )
 
