@@ -9,17 +9,6 @@ module.exports = (app, root) ->
     paths: [
       "vendor/js", "components/jquery-ui/ui", "components/bootstrap/js", "app/assets/javascripts",
       "components/bootstrap/stuff", "vendor/css", "components/jquery-ui-bootstrap", "app/assets/stylesheets"
-      # "app/assets/stylesheets",
-      # "app/assets/javascripts",
-      # "app/assets/images",
-      # "vendor/jquery",
-      # "components/jquery-ui/ui",
-      # # "components/jquery-ui/themes/ui-lightness",
-      # "components/jquery-ui-bootstrap",
-      # "components/bootstrap/stuff",
-      # "components/bootstrap/docs/assets/js",
-      # "vendor/css",
-      # "vendor/js"
     ]
   )
 

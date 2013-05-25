@@ -17,7 +17,7 @@ fs.readdirSync(models_path).forEach (file) ->
   require models_path + "/" + file
 
 # bootstrap mincer config
-require('./config/initializers/mincer')(app, __dirname)
+require('./config/initializers/mincer')(app, __dirname) if process.env.NODE_ENV isnt "production"
 
 # bootstrap express config
 require('./config/initializers/express')(app, __dirname, redisSessionStore, passport, session_extender, app_helper)

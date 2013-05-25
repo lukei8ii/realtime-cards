@@ -1,5 +1,6 @@
 flash = require "connect-flash"
 express = require "express"
+path = require "path"
 
 module.exports = (app, root, redisSessionStore, passport, session_extender, helpers) ->
   app.set "port", process.env.PORT or 5000
@@ -52,7 +53,7 @@ module.exports = (app, root, redisSessionStore, passport, session_extender, help
     # routes should be at the last
     # app.use app.router
 
-    # app.use express.static(path.join(root, "public"))
+    app.use express.static(path.join(root, "public")) if "production" is app.get("env")
 
     # app.locals.numberToCurrency = (val) ->
     #   5
