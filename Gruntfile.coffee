@@ -27,4 +27,4 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks "grunt-contrib-cssmin"
 
   grunt.registerTask "heroku", ["mince", "uglify", "cssmin"]
-  # grunt.registerTask "heroku", ["mince"]
+  grunt.registerTask "dev", ["mince"]
