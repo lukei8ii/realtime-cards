@@ -41,7 +41,7 @@ module.exports = (grunt) ->
       my_target:
         files:
           'public/assets/application.js': ["public/assets/application.js"]
-          'public/engine.js': ["public/engine.js"]
+          'public/game/engine.js': ["public/game/engine.js"]
     cssmin:
       combine:
         files:
