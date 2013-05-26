@@ -53,7 +53,7 @@ module.exports = (app, root, redisSessionStore, passport, session_extender, help
     # routes should be at the last
     # app.use app.router
 
-    app.use express.static(path.join(root, "public")) if "production" is app.get("env")
+    app.use express.static(path.join(root, "public"))
 
     # app.locals.numberToCurrency = (val) ->
     #   5
