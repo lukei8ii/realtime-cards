@@ -9,7 +9,7 @@ module.exports = (grunt) ->
       cocos2d:
         src: "cocos2d.js"
         include: ["vendor/cocos2d-html5-master"],
-        dest: "public/cocos2d.js"
+        dest: "public/game/engine.js"
       css:
         src: "application.css"
         include: ["app/assets/stylesheets", "vendor/bootstrap/main", "vendor/css", "vendor/jquery-ui-bootstrap"],
@@ -41,7 +41,7 @@ module.exports = (grunt) ->
       my_target:
         files:
           'public/assets/application.js': ["public/assets/application.js"]
-          'public/cocos2d.js': ["public/cocos2d.js"]
+          'public/engine.js': ["public/engine.js"]
     cssmin:
       combine:
         files:

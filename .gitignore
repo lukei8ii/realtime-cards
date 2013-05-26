@@ -18,4 +18,4 @@ npm-debug.log
 Procfile.dev
 
 public/assets/*
-public/cocos2d.js
+public/game/*
