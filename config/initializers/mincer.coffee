@@ -8,7 +8,8 @@ module.exports = (app, root) ->
     manifestFile: "#{root}/public/assets/manifest.json"
     paths: [
       "vendor/js", "vendor/jquery-ui/ui", "vendor/bootstrap/js", "app/assets/javascripts", "vendor/cocos2d",
-      "vendor/bootstrap/main", "vendor/css", "vendor/jquery-ui-bootstrap", "app/assets/stylesheets"
+      "vendor/bootstrap/main", "vendor/css", "vendor/jquery-ui-bootstrap", "app/assets/stylesheets",
+      "app/assets/images"
     ]
   )
 

@@ -17,7 +17,6 @@
     "underscore": "latest",
     "passport": "latest",
     "passport-facebook": "latest",
-    "config": "latest",
     "connect-flash": "latest",
     "passport.socketio": "latest",
     "connect-redis": "latest",
@@ -38,6 +37,7 @@
     "grunt": "latest",
     "grunt-contrib-uglify": "~0.2.1",
     "grunt-contrib-cssmin": "~0.6.0",
-    "grunt-contrib-copy": "~0.4.1"
+    "grunt-contrib-copy": "~0.4.1",
+    "phantom": "latest"
   }
 }

@@ -17,5 +17,6 @@ npm-debug.log
 .DS_Store
 Procfile.dev
 
+app/assets/images/gtc/*
 public/assets/*
 public/game/*

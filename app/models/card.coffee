@@ -3,29 +3,23 @@ mongoose = require "mongoose"
 cardSchema = new mongoose.Schema(
   name:
     type: String
-    trim: true
-  mana_costs: [
+  cost:
     type: String
-  ]
-  types:
+  type:
     type: String
-    trim: true
+  rules:
+    type: String
   text:
     type: String
-    trim: true
-  flavor:
-    type: String
-    trim: true
   power:
     type: Number
   toughness:
     type: Number
-  expansion:
+  sets: [
     type: String
-    trim: true
+  ]
   rarity:
     type: String
-    trim: true
   number:
     type: Number
 )
