@@ -7,7 +7,7 @@ $ ->
       lazyLayer = cc.Layer.create()
       @addChild lazyLayer
 
-      @sprite = cc.Sprite.create "assets/gtc/37.jpg"
+      @sprite = cc.Sprite.create "https://s3.amazonaws.com/realtime-cards/37.jpg"
       @sprite.setPosition(cc.p(size.width / 2, size.height / 2))
       # @sprite.setScale 0.5
 

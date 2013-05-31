@@ -1,13 +1,7 @@
-###
-Module dependencies.
-###
 mongoose = require "mongoose"
 Schema = mongoose.Schema
 
-###
-User Schema
-###
-UserSchema = new Schema(
+userSchema = new Schema(
   name: String
   email: String
   username: String
@@ -15,4 +9,4 @@ UserSchema = new Schema(
   facebook: {}
 )
 
-mongoose.model "User", UserSchema
+module.exports = mongoose.model "User", userSchema

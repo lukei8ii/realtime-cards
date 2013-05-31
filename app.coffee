@@ -29,8 +29,7 @@ require("./config/initializers/passport")(passport)
 require('./config/initializers/socket.io')(io, redisSessionStore)
 
 # bootstrap db connection
-uristring = process.env.MONGOLAB_URI or process.env.MONGOHQ_URL
-mongoose.connect uristring
+mongoose.connect process.env.MONGOLAB_URI
 
 # bootstrap routes
 require("./config/routes")(app, passport, auth)
