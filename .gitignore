@@ -20,3 +20,5 @@ Procfile.dev
 app/assets/images/gtc/*
 public/assets/*
 public/game/*
+
+node_modules/*
