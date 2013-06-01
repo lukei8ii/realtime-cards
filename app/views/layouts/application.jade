@@ -4,11 +4,12 @@ html(lang='en')
   body
     .wrapper
       include ../includes/header
-      .container.container-fluid.main
-        .row-fluid
-          .span2
-            block sidebar
-          .span10
-            block content
+      block content
+      //- .container.container-fluid.main
+      //-   .row-fluid
+      //-     .span2
+      //-       block sidebar
+      //-     .span10
+      //-       block content
       include ../includes/footer
     include ../includes/foot

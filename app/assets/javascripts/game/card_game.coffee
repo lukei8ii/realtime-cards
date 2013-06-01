@@ -4,16 +4,25 @@ class RTC.Game.CardGame
       @_super()
       size = cc.Director.getInstance().getWinSize()
 
+      lazylayer = cc.Layer.create()
+      @addChild lazylayer
+
+      @sprite = cc.Sprite.create RTC.Game.Resource.WALLPAPER
+      content_size = @sprite.getContentSize()
+      scaleX = size.width / content_size.width
+      @sprite.setScale scaleX
+      @sprite.setAnchorPoint(cc.p(0.5, 0.5))
+      @sprite.setPosition(cc.p(size.width / 2, size.height / 2))
+
+      lazylayer.addChild @sprite, 0
+
       RTC.chat.iosocket.on "cards", (cards) =>
         $.each cards, (index, card) =>
-          lazyLayer = cc.Layer.create()
-          @addChild lazyLayer
-
           @sprite = cc.Sprite.create card.image_url
           @sprite.setPosition(cc.p(size.width / 2 + index * 40, size.height / 2))
           @sprite.setScale 0.5
 
-          lazyLayer.addChild @sprite, 0
+          lazylayer.addChild @sprite, 0
 
       RTC.chat.iosocket.emit "cards"
 

@@ -6,7 +6,7 @@ class RTC.Cocos2d
       box2d: false
       showFPS: false
       frameRate: 60
-      renderMode: 0
+      renderMode: 1
       tag: "gameCanvas" #the dom element to run cocos2d on
 
     # load canvas
