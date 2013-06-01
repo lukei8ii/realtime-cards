@@ -22,8 +22,7 @@
     "connect-redis": "latest",
     "mincer": "latest",
     "connect-mincer": "latest",
-    "uglify-js": "latest",
-    "constants": "0.0.1"
+    "uglify-js": "latest"
   },
   "repository": {
     "type": "git",
