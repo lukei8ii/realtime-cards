@@ -1,6 +1,7 @@
 passportSocketIo = require "passport.socketio"
 mongoose = require "mongoose"
 User = mongoose.model "User"
+Card = mongoose.model "Card"
 _ = require "underscore"
 
 module.exports = (io, redisSessionStore) ->
@@ -42,3 +43,11 @@ module.exports = (io, redisSessionStore) ->
       ).forEach (s) ->
         console.log "emitting private"
         s.emit "private", { from: current_user._id, message: data.message }
+
+    socket.on "cards", ->
+      Card.find().limit(7).exec (err, cards) ->
+        socket.emit "cards", cards
+
+    socket.on "card_assets", ->
+      Card.find().limit(7).exec (err, cards) ->
+        socket.emit "card_assets", cards

@@ -12,9 +12,6 @@ mongoose = require "mongoose"
 Card = require "../../app/models/card"
 ph = require "phantom"
 
-CARD_SETS =
-  "Magic 2013": "m13"
-
 getCardData = ->
   # bootstrap db connection
   mongoose.connect process.env.MONGOLAB_URI
@@ -117,7 +114,7 @@ getCardCount = (ph) ->
 getImages = (count) ->
   aws_config = jf.readFileSync "#{__dirname}/../../aws.json"
   client = knox.createClient aws_config
-  set_id = CARD_SETS[set]
+  set_id = Card.CARD_SETS[set]
 
   i = 1
   while i <= count

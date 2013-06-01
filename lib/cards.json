@@ -1,5 +1,0 @@
-[
-  { "name": "Forest", "types": "Basic Land — Forest", "rarity": "Basic Land", "number": 273, "text": "G", "expansion": "Magic 2013" },
-  { "name": "Swamp", "types": "Basic Land — Swamp", "text": "B", "expansion": "Magic 2013", "rarity": "Basic Land" },
-  { "name": "Deadly Recluse", "mana_costs": ["1","G"], "types": "Creature — Spider", "text": "Reach (This creature can block creatures with flying.) Deathtouch (Any amount of damage this deals to a creature is enough to destroy it.)", "flavor": "Even dragons fear its silken strands.", "power": 1, "toughness": 2, "expansion": "Magic 2013", "rarity": "Common", "number": 165 }
-]

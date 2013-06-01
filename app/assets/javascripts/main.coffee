@@ -1,5 +1,5 @@
-$ ->
-  $("body").on "cocos2d", ->
+class RTC.Main
+  @init: ->
     cocos2dApp = cc.Application.extend(
       config: document["ccConfig"]
       ctor: (scene) ->
@@ -30,10 +30,10 @@ $ ->
         director.setAnimationInterval 1.0 / @config["frameRate"]
 
         #load resources
-        cc.LoaderScene.preload g_ressources, (->
+        cc.LoaderScene.preload RTC.g_ressources, (->
           director.replaceScene new @startScene()
         ), this
         true
     )
 
-    myApp = new cocos2dApp(RTC.RealtimeCardsScene)
+    RTC.myApp = new cocos2dApp RTC.Game.RealtimeCardsScene

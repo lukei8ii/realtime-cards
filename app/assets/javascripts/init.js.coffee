@@ -1,5 +1,12 @@
 RTC = {}
+RTC.Game = {}
 
 $ ->
-  chat = new RTC.ChatboxManager $("#current_user").data("id")
-  # game = new RTC.GameController()
+  RTC.chat = new RTC.ChatboxManager $("#current_user").data("id")
+  RTC.Game.Resource.init (resources) ->
+    RTC.g_ressources = resources
+    RTC.Cocos2d.init()
+
+  $("body").on "cocos2d", ->
+    RTC.Game.CardGame.init()
+    RTC.Main.init()
