@@ -42,7 +42,7 @@ class RTC.Main
         true
     )
 
-    RTC.myApp = new cocos2dApp RTC.Game.RealtimeCardsScene
+    RTC.myApp = new cocos2dApp RTC.RealtimeCardsScene
 
   @resizeCanvas: ->
     bounds = $(window)
@@ -80,8 +80,6 @@ class RTC.Main
 
     canvas.width(cc.canvas.width)
     canvas.height(cc.canvas.height)
-
-    container.prev().css("margin-bottom", canvas.width * -1)
 
     cc.renderContext.translate(0, cc.canvas.height)
     cc.renderContext.scale(xScale, xScale)

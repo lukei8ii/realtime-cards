@@ -1,13 +1,13 @@
-class RTC.Game.CardGame
+class RTC.CardGame
   @init: ->
-    RTC.Game.RealtimeCards = cc.Layer.extend(init: ->
+    RTC.RealtimeCards = cc.Layer.extend(init: ->
       @_super()
       size = cc.Director.getInstance().getWinSize()
 
       lazylayer = cc.Layer.create()
       @addChild lazylayer
 
-      @sprite = cc.Sprite.create RTC.Game.Resource.WALLPAPER
+      @sprite = cc.Sprite.create RTC.Resource.WALLPAPER
       content_size = @sprite.getContentSize()
       scaleX = size.width / content_size.width
       @sprite.setScale scaleX
@@ -29,9 +29,9 @@ class RTC.Game.CardGame
       true
     )
 
-    RTC.Game.RealtimeCardsScene = cc.Scene.extend(onEnter: ->
+    RTC.RealtimeCardsScene = cc.Scene.extend(onEnter: ->
       @_super()
-      layer = new RTC.Game.RealtimeCards()
+      layer = new RTC.RealtimeCards()
       layer.init()
       @addChild layer
     )

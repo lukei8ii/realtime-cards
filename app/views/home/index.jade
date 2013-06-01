@@ -11,3 +11,8 @@ extends ../layouts/application
 
 block content
   canvas#gameCanvas(width='1440', height='737')
+  #friends(style='display:none')
+    .ui-widget-header.ui-chatbox-titlebar.ui-dialog-header Friends
+      a.ui-corner-all.ui-chatbox-icon#closeFriends(href='#', role='button')
+        span.ui-icon.ui-icon-closethick close
+    ul#clients.unstyled
