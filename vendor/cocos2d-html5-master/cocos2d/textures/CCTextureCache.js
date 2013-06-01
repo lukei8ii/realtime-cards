@@ -43,6 +43,7 @@ cc.loadImage = function (imageUrl) {
     }
     var image = new Image();
     image.src = imageUrl;
+    image.crossOrigin = "anonymous";
     image.onLoad = function (e) {
         cc.TextureCache.getInstance().cacheImage(imageUrl, image);
     };
