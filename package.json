@@ -22,7 +22,12 @@
     "connect-redis": "latest",
     "mincer": "latest",
     "connect-mincer": "latest",
-    "uglify-js": "latest"
+    "uglify-js": "latest",
+    "grunt": "latest",
+    "grunt-mincer": "latest",
+    "grunt-contrib-uglify": "latest",
+    "grunt-contrib-cssmin": "latest",
+    "grunt-contrib-copy": "latest"
   },
   "repository": {
     "type": "git",
@@ -34,11 +39,6 @@
   },
   "devDependencies": {
     "nodemon": "latest",
-    "grunt": "latest",
-    "grunt-mincer": "latest",
-    "grunt-contrib-uglify": "latest",
-    "grunt-contrib-cssmin": "latest",
-    "grunt-contrib-copy": "latest",
     "phantom": "latest",
     "knox": "latest"
   }
