@@ -38,8 +38,8 @@
     "npm": "1.2.x"
   },
   "devDependencies": {
-    "nodemon": "latest",
-    "phantom": "latest",
-    "knox": "latest"
+    // "nodemon": "latest",
+    // "phantom": "latest",
+    // "knox": "latest"
   }
 }
