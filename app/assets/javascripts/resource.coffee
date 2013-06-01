@@ -1,5 +1,5 @@
 class RTC.Resource
-  @WALLPAPER: "https://s3.amazonaws.com/realtime-cards/mtg_wallpaper.jpg"
+  @WALLPAPER: "https://s3.amazonaws.com/realtime-cards/backgrounds/mtg_wallpaper.jpg"
 
   @init: (callback) ->
     resources = []
